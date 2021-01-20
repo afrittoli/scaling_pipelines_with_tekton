@@ -1,0 +1,80 @@
+\documentclass[aspectratio=169,11pt,hyperref={colorlinks=true}]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{listingsutf8}
+\usepackage{listings-golang}
+\usepackage{tikz}
+\usepackage{color}
+
+
+\title{Scaling Pipelines with Tekton}
+\date[Scaling Continuous Delivery]{Feb 2nd 2021, Scaling Continuous Delivery (Virtual)}
+\author[Andrea]{
+  Andrea Frittoli \\
+  Developer Advocate \\
+  andrea.frittoli@uk.ibm.com \\
+  @blackchip76
+}
+
+\usetheme{af}
+
+% Code style
+\setlststyle
+
+\lstdefinelanguage{koyaml}{
+  keywords={github, com, afrittoli, examples, ms, go, helloworld},
+  sensitive=false,
+  comment=[l]{\#},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+% Automatic section frame
+\AtBeginSection{\frame{\sectionpage}}
+
+\begin{document}
+
+\begin{frame}[noframenumbering]
+\titlepage{}
+\end{frame}
+
+\section{Section1}
+
+\begin{lgrayrwhiteframe}
+  \frametitle{Slide}
+\end{lgrayrwhiteframe}
+
+\begin{lblackrwhiteframe}
+  \frametitle{Slide}
+\end{lblackrwhiteframe}
+
+\begin{blackframe}
+  \frametitle{Slide}
+\end{blackframe}
+
+\section{Section2}
+
+\begin{tblackbgrayframe}
+  \lstset{
+    otherkeywords={*,...,/,.},
+  }
+  \frametitle{Slide}
+  \setlststyle
+\end{tblackbgrayframe}
+
+
+\begin{blackframe}
+  \frametitle{Thank You! Questions?}
+  \vspace{30pt}
+  \footnotesize\insertauthor\par---\par%
+  \vspace{10ex}
+  References:
+  \begin{itemize}
+    \item A
+    \item B
+  \end{itemize}
+\end{blackframe}
+
+\end{document}
