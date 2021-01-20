@@ -11,4 +11,6 @@ To build the example just run::
 
   % xelatex scaling_pipelines_with_tekton.tex
 
-the output will be scaling_pipelines_with_tekton.pdf.
+the output will be:
+
+.. scaling_pipelines_with_tekton.pdf scaling_pipelines_with_tekton.pdf
