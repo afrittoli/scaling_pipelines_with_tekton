@@ -1,6 +1,6 @@
-==========================================
-An intro to ko, developing the knative way
-==========================================
+=============================
+Scaling Pipelines with Tekton
+=============================
 
 Install xelatex with most of the plugins via your distro.
 Either xelatex or lualatex are required for the fontspec package to work.
