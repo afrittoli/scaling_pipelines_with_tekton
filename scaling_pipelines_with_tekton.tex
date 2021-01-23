@@ -42,18 +42,18 @@
 
 \section{Introduction}
 
-\begin{sectionwithpic}[mike-benna-X-NAMq6uP3Q-unsplash.jpg]{Photo by \href{https://unsplash.com/@mbenna}{\underline{Mike Benna}}, no license.}
+\begin{sectionwithpic}[mike-benna-X-NAMq6uP3Q-unsplash.jpg]{Photo by \href{https://unsplash.com/@mbenna}{\underline{Mike Benna}}, CC0}
 \end{sectionwithpic}
 
 \begin{grayframe}
   \frametitle{What is Tekton}
   % A brief into to Tekton
-\end{lgrayrwhiteframe}
+\end{grayframe}
 
 \begin{grayframe}
   \frametitle{A bit of history}
   % Knative, Tekton and the CDF
-\end{lblackrwhiteframe}
+\end{grayframe}
 
 \section{Authoring}
 
@@ -68,47 +68,62 @@
   % Tasks == pods, cheap I/O
   % Tasks do one thing well, stable interface
   % Tasks are re-usable, produced by experts
-\end{blackframe}
+\end{grayframe}
 
 \begin{grayframe}
   \frametitle{Catalog and Hub}
   % Sharing Tasks and discovery
   % Tekton Bundles
-\end{blackframe}
+\end{grayframe}
 
 \begin{grayframe}
   \frametitle{The Pipeline}
   % Ever growing pipeline, multiple teams add to it
-\end{blackframe}
+\end{grayframe}
 
 \section{Running}
 
 \begin{sectionwithpic}[pexels-ray-bilcliff-1509237.jpg]{Photo by \href{https://www.pexels.com/@raybilcliff}{\underline{Ray Bilcliff}}, CC0}
 \end{sectionwithpic}
 
-% Running pipelines and triggers
-% Receiving and sending events
-% Further spread responsibility, break the pipeline
-% Interop and event SIG
+
+\begin{grayframe}
+  \frametitle{Pipelines \& Secrets}
+  % Running pipelines and triggers
+\end{grayframe}
+
+\begin{grayframe}
+  \frametitle{Events}
+  % Receiving and sending events
+  % Further spread responsibility, break the pipeline
+  % Interop and event SIG
+\end{grayframe}
 
 \section{Bottlenecks}
 \begin{sectionwithpicrx}[dan-cristian-padure-LDMgqr8z7ZE-unsplash.jpg]{Photo by \href{https://unsplash.com/@dancristianp}{\underline{Dan-Cristian Pădureț}}, CC0}
 \end{sectionwithpicrx}
 
-% Large pipelines
-% Many pipelines in parallel / bursts
-% -> Informers, LeaderElection
-% Large execution history
-% Unit of re-use and data
-% -> tasks vs pipelines, pod overhead, data across nodes
+\begin{grayframe}
+  \frametitle{Growing pipelines}
+  % Large pipelines
+\end{grayframe}
 
 \begin{grayframe}
-  \frametitle{Scaling Pipelines}
+  \frametitle{Under pressure}
+  % Many pipelines in parallel / bursts
+  % -> Informers, LeaderElection
+  % Large execution history
+\end{grayframe}
+
+\begin{grayframe}
+  \frametitle{Data}
+  % Unit of re-use and data
+  % -> tasks vs pipelines, pod overhead, data across nodes
 \end{blackframe}
 
 \section[The End]{Thank You! \\Questions?}
 
-\begin{sectionwithpiclargecentral}[mike-benna-X-NAMq6uP3Q-unsplash.jpg]{Photo by \href{https://unsplash.com/@mbenna}{\underline{Mike Benna}}, no license.}
+\begin{sectionwithpiclargecentral}[carl-jorgensen-5nrnxx_tWe8-unsplash.jpg]{Photo by \href{https://unsplash.com/@scamartist}{\underline{Carl Jorgensen}}, CC0}
 \end{sectionwithpiclargecentral}
 
 \begin{blackframe}
@@ -116,7 +131,8 @@
   References:
   \begin{itemize}
     \item Slides: \href{https://github.com/afrittoli/scaling_pipelines_with_tekton/blob/scd2021/scaling_pipelines_with_tekton.pdf}{github.com/afrittoli/scaling\_pipelines\_with\_tekton}
-    \item B
+    \item Tekton: \href{https://tekton.dev}{tekton.dev}
+    \item Tekton on GitHub: \href{https://github.com/tektoncd}{github.com/tektoncd}
   \end{itemize}
 \end{blackframe}
 
