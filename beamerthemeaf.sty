@@ -39,10 +39,12 @@
   \setbeamercolor{title}{fg=myblack}
   \setbeamercolor{normal text}{fg=myblack}
   \setbeamercolor{frametitle}{fg=myblack}
+  \setblacklogofootline
   \begin{frame}[t]
 }
 {
   \end{frame}
+  \setwhitelogofootline
 }
 
 \newenvironment{lgrayrwhiteframe}
@@ -157,8 +159,79 @@
   		\begin{tikzpicture}
   			\fill[color=myblack] (0, 0) rectangle (\the\paperwidth, 0.2\paperheight);
   		\end{tikzpicture}
-  	}
+    }
   \begin{frame}[t]
+}
+{
+  \end{frame}
+}
+
+\newenvironment<>{sectionwithpic}[2][]
+{
+  \begin{frame}[t]
+    \begin{textblock*}{\paperwidth}(0cm,0cm)
+      \includegraphics[width=\paperwidth]{img/#1}
+    \end{textblock*}
+    \begin{textblock*}{\paperwidth}(0.32cm,0.34cm)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{section page header}
+        \usebeamerfont{section name}\insertsection%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+    \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
+        \usebeamerfont{photolicense}#2%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+}
+{
+  \end{frame}
+}
+
+\newenvironment<>{sectionwithpicrx}[2][]
+{
+  \begin{frame}[t]
+    \begin{textblock*}{\paperwidth}(0cm,0cm)
+      \includegraphics[width=\paperwidth]{img/#1}
+    \end{textblock*}
+    \begin{textblock*}{0.4\paperwidth}(0.57\paperwidth,0cm)%
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{section page header}%
+        \usebeamerfont{section name}%
+          \begin{flushright}%
+            \insertsection%
+          \end{flushright}%
+      \end{beamercolorbox}%
+    \end{textblock*}
+    \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
+        \usebeamerfont{photolicense}#2%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+}
+{
+  \end{frame}
+}
+
+\newenvironment<>{sectionwithpiclargecentral}[2][]
+{
+  \begin{frame}[t]
+    \begin{textblock*}{\paperwidth}(0cm,0cm)
+      \includegraphics[width=\paperwidth]{img/#1}
+    \end{textblock*}
+    \begin{textblock*}{\paperwidth}(0cm,0.35\paperheight)%
+      \begin{beamercolorbox}[wd=\paperwidth]{section page header}%
+        \usebeamerfont{largecentral}%
+          \centering\insertsection%
+      \end{beamercolorbox}%
+    \end{textblock*}
+    \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
+        \usebeamerfont{photolicense}#2%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
 }
 {
   \end{frame}

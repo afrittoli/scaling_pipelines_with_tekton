@@ -1,7 +1,7 @@
 \mode<presentation>
 
 % Title page
-\defbeamertemplate*{title page}{mycloud}[1][]
+\defbeamertemplate*{title page}{af}[1][]
 {
   \begin{textblock*}{\paperwidth}(0.32cm,0.34cm)
     \begin{beamercolorbox}[wd=0.4\paperwidth]{title page header}
@@ -9,9 +9,6 @@
       \usebeamerfont{author}\small\insertauthor\par%
     \end{beamercolorbox}%
     \vfill
-  \end{textblock*}
-  \begin{textblock*}{0.8cm}(0.94\paperwidth,0.82\paperheight)
-    \includegraphics[width=1cm]{img/IBM_rebus_v_rev_white_RGB.png}
   \end{textblock*}
 }
 
@@ -28,16 +25,13 @@
 \addtobeamertemplate{title page}{\thispagestyle{navigation@titlepage}}{}
 
 % Section page
-\defbeamertemplate*{section page}{mycloud}[1][]
+\defbeamertemplate*{section page}{af}[1][]
 {
   \begin{textblock*}{\paperwidth}(0.32cm,0.34cm)
     \begin{beamercolorbox}[wd=0.4\paperwidth]{section page header}
       \usebeamerfont{section name}\insertsection%
     \end{beamercolorbox}%
     \vfill
-  \end{textblock*}
-  \begin{textblock*}{0.8cm}(0.94\paperwidth,0.82\paperheight)
-    \includegraphics[width=1cm]{img/IBM_rebus_v_rev_white_RGB.png}
   \end{textblock*}
 }
 
