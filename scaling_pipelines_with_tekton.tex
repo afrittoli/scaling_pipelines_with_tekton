@@ -47,11 +47,17 @@
 
 \begin{grayframe}
   \frametitle{What is Tekton}
+  \begin{itemize}
+    \item A brief into to Tekton
+  \end{itemize}
   % A brief into to Tekton
 \end{grayframe}
 
 \begin{grayframe}
   \frametitle{A bit of history}
+  \begin{itemize}
+    \item Knative, Tekton and the CDF
+  \end{itemize}
   % Knative, Tekton and the CDF
 \end{grayframe}
 
@@ -62,6 +68,14 @@
 
 \begin{grayframe}
   \frametitle{Steps, Tasks and Teams}
+  \begin{itemize}
+    \item units of reuse
+    \item Steps for small scripts of OTS images
+    \item we don't want large shell scripts embedded in YAML
+    \item Tasks == pods, cheap I/O
+    \item Tasks do one thing well, stable interface
+    \item Tasks are re-usable, produced by "experts"
+  \end{itemize}
   % units of reuse
   % Steps for small scripts of OTS images
   % we don't want large shell scripts embedded in YAML
@@ -72,12 +86,21 @@
 
 \begin{grayframe}
   \frametitle{Catalog and Hub}
+  \begin{itemize}
+    \item Sharing Tasks and discovery
+    \item Hub and API
+    \item Tekton Bundles
+  \end{itemize}
   % Sharing Tasks and discovery
   % Tekton Bundles
 \end{grayframe}
 
 \begin{grayframe}
   \frametitle{The Pipeline}
+  \begin{itemize}
+    \item Ever growing pipeline
+    \item Multiple teams add to it
+  \end{itemize}
   % Ever growing pipeline, multiple teams add to it
 \end{grayframe}
 
@@ -88,12 +111,21 @@
 
 
 \begin{grayframe}
-  \frametitle{Pipelines \& Secrets}
+  \frametitle{Pipelines \& Triggers}
+  \begin{itemize}
+    \item Intro to triggers
+    \item Running pipelines through triggers
+  \end{itemize}
   % Running pipelines and triggers
 \end{grayframe}
 
 \begin{grayframe}
   \frametitle{Events}
+  \begin{itemize}
+    \item Receiving and sending events
+    \item Further spread responsibility, break the pipeline
+    \item Interop and event SIG
+  \end{itemize}
   % Receiving and sending events
   % Further spread responsibility, break the pipeline
   % Interop and event SIG
@@ -105,11 +137,20 @@
 
 \begin{grayframe}
   \frametitle{Growing pipelines}
+  \begin{itemize}
+    \item Large pipelines
+    \item Story about DAG issue
+  \end{itemize}
   % Large pipelines
 \end{grayframe}
 
 \begin{grayframe}
   \frametitle{Under pressure}
+  \begin{itemize}
+    \item Many pipelines in parallel / bursts
+    \item Informers, LeaderElection
+    \item Large execution history
+  \end{itemize}
   % Many pipelines in parallel / bursts
   % -> Informers, LeaderElection
   % Large execution history
@@ -117,6 +158,12 @@
 
 \begin{grayframe}
   \frametitle{Data}
+  \begin{itemize}
+    \item Unit of re-use and data
+    \item Tasks vs pipelines
+    \item pod overhead
+    \item data across nodes
+  \end{itemize}
   % Unit of re-use and data
   % -> tasks vs pipelines, pod overhead, data across nodes
 \end{blackframe}
