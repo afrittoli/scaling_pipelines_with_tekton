@@ -50,5 +50,7 @@
 \setbeamertemplate{itemize items}{--}
 \setbeamersize{text margin left=0.32cm,text margin right=0.32cm}
 
+\patchcmd{\beamer@section}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+
 \mode
 <all>

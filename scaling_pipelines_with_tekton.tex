@@ -7,15 +7,17 @@
 \usepackage{listings-golang}
 \usepackage{tikz}
 \usepackage{color}
+\usepackage{fontawesome5}
 
 
 \title{Scaling Pipelines with Tekton}
-\date[Scaling Continuous Delivery]{02 Feb 2021, Scaling Continuous Delivery (Virtual)}
-\author[Andrea]{
+\date[02 Feb 2021]{02 Feb 2021 | \faTwitter ~@blackchip76 | \faGithub ~afrittoli}
+\author[Andrea Frittoli]{
   Andrea Frittoli \\
   Developer Advocate \\
   andrea.frittoli@uk.ibm.com \\
-  @blackchip76
+  --- \\
+  Scaling Continuous Delivery (Virtual)
 }
 
 \usetheme{af}
@@ -36,11 +38,15 @@
 
 \begin{document}
 
-\begin{frame}[noframenumbering]
+\begin{frame}
 \titlepage{}
 \end{frame}
 
-\section{Introduction}
+\begin{lpicrblack}[chewy-I-rgDPLKogs-unsplash.jpg]{Photo by \href{https://unsplash.com/@chewy}{\underline{Chewy}}, CC0}
+  \frametitle{Agenda}
+\end{lpicrblack}
+
+\section[Introduction]{Introduction}
 
 \begin{sectionwithpic}[mike-benna-X-NAMq6uP3Q-unsplash.jpg]{Photo by \href{https://unsplash.com/@mbenna}{\underline{Mike Benna}}, CC0}
 \end{sectionwithpic}
@@ -61,7 +67,7 @@
   % Knative, Tekton and the CDF
 \end{grayframe}
 
-\section{Authoring}
+\section[Authoring]{Authoring}
 
 \begin{sectionwithpicrx}[pierre-bamin--ltjzTfhpCI-unsplash.jpg]{Photo by \href{https://unsplash.com/@bamin}{\underline{Pierre Bamin}}, CC0}
 \end{sectionwithpicrx}
@@ -104,7 +110,7 @@
   % Ever growing pipeline, multiple teams add to it
 \end{grayframe}
 
-\section{Running}
+\section[Running]{Running}
 
 \begin{sectionwithpic}[pexels-ray-bilcliff-1509237.jpg]{Photo by \href{https://www.pexels.com/@raybilcliff}{\underline{Ray Bilcliff}}, CC0}
 \end{sectionwithpic}
@@ -131,7 +137,7 @@
   % Interop and event SIG
 \end{grayframe}
 
-\section{Bottlenecks}
+\section[Bottlenecks]{Bottlenecks}
 \begin{sectionwithpicrx}[dan-cristian-padure-LDMgqr8z7ZE-unsplash.jpg]{Photo by \href{https://unsplash.com/@dancristianp}{\underline{Dan-Cristian Pădureț}}, CC0}
 \end{sectionwithpicrx}
 
@@ -168,14 +174,14 @@
   % -> tasks vs pipelines, pod overhead, data across nodes
 \end{blackframe}
 
-\section[The End]{Thank You! \\Questions?}
+\section[Q\&A]{Thank You! \\Questions?}
 
 \begin{sectionwithpiclargecentral}[carl-jorgensen-5nrnxx_tWe8-unsplash.jpg]{Brecon Beacons, Walse, Photo by \href{https://unsplash.com/@scamartist}{\underline{Carl Jorgensen}}, CC0}
 \end{sectionwithpiclargecentral}
 
 \begin{blackframe}
   \frametitle{References}
-  References:
+  \vfill
   \begin{itemize}
     \item Slides: \href{https://github.com/afrittoli/scaling_pipelines_with_tekton/blob/scd2021/scaling_pipelines_with_tekton.pdf}{github.com/afrittoli/scaling\_pipelines\_with\_tekton}
     \item Tekton: \href{https://tekton.dev}{tekton.dev}

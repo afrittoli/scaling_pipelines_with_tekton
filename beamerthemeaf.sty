@@ -237,6 +237,37 @@
   \end{frame}
 }
 
+\newenvironment{lpicrblack}[2][]
+{
+  \setbeamercolor{background canvas}{bg=myblack}
+  \setbeamercolor*{footline}{fg=white}
+  \setbeamercolor{title}{fg=white}
+  \setbeamercolor{normal text}{fg=white}
+  \setbeamercolor{frametitle}{fg=white}
+  \setbeamercolor{itemize item}{fg=white}
+  \setbeamercolor{item}{fg=white}
+  \setbeamercolor{subitem}{fg=white}
+  \setbeamercolor{block body}{fg=white}
+  \usebeamercolor[fg]{normal text}
+  \setbeamertemplate{background}{
+    \includegraphics[width=0.5\linewidth]{img/#1}
+  }
+  \setbeamertemplate{footline}{}
+  \begin{frame}[noframenumbering]
+    \leftskip=0.55\paperwidth
+    \tableofcontents
+    \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
+        \usebeamerfont{photolicense}#2%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+}
+{
+  \end{frame}
+  \setwhitelogofootline
+}
+
 % Code listing style
 \newcommand{\setlststyle}{
   \lstset{ %
