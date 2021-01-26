@@ -19,48 +19,42 @@
 \newenvironment{blackframe}
 {
   \setbeamercolor{background canvas}{bg=myblack}
-  \setbeamercolor{palette primary}{fg=white}
-  \setbeamercolor{titlelike}{fg=white}
-  \setbeamercolor{normal text}{fg=white}
-  \setbeamercolor{frametitle}{fg=white}
-  \setbeamercolor{author}{fg=white}
-  \setbeamercolor*{footline}{fg=white}
-  \usebeamercolor[fg]{normal text}
-  \begin{frame}[t]
+  \setbeamercolor*{frametitle}{fg=white}
+  \settextcolour{white}
+  \setwhitelogofootline{}
+  \begin{frame}[c]
 }
 {
   \end{frame}
+  \setblacklogofootline
 }
 
 \newenvironment{grayframe}
 {
   \setbeamercolor{background canvas}{bg=mylightgray}
-  \setbeamercolor*{footline}{fg=myblack}
-  \setbeamercolor{title}{fg=myblack}
-  \setbeamercolor{normal text}{fg=myblack}
-  \setbeamercolor{frametitle}{fg=myblack}
+  \setbeamercolor*{frametitle}{fg=myblack}
+  \settextcolour{myblack}
   \setblacklogofootline
-  \begin{frame}[t]
+  \begin{frame}[c]
 }
 {
   \end{frame}
-  \setwhitelogofootline
+  \setwhitelogofootline{}
 }
 
 \newenvironment{lgrayrwhiteframe}
 {
   \setbeamercolor{background canvas}{bg=mylightgray}
-  \setbeamercolor*{footline}{fg=myblack}
-  \setbeamercolor{title}{fg=myblack}
-  \setbeamercolor{normal text}{fg=myblack}
-  \setbeamercolor{frametitle}{fg=myblack}
+  \setbeamercolor*{frametitle}{fg=myblack}
   \setbeamertemplate{background}{
-  		\begin{tikzpicture}
-  			\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  			\fill[color=white] (0.5\paperwidth, 0) rectangle (\the\paperwidth, \the\paperheight);
-  		\end{tikzpicture}
-  	}
-  \begin{frame}[t]
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+      \fill[color=mylightgray, opacity=0.4] (0, 0) rectangle (0.57\paperwidth, \the\paperheight);
+      \fill[color=white] (0.47\paperwidth, 0) rectangle (\the\paperwidth, \the\paperheight);
+    \end{tikzpicture}
+  }
+  \setblacklogofootline
+  \begin{frame}[c]
 }
 {
   \end{frame}
@@ -69,15 +63,8 @@
 \newenvironment{lblackrwhiteframe}
 {
   \setbeamercolor{background canvas}{bg=myblack}
-  \setbeamercolor*{footline}{fg=white}
-  \setbeamercolor{title}{fg=white}
-  \setbeamercolor{normal text}{fg=white}
-  \setbeamercolor{frametitle}{fg=white}
-  \setbeamercolor{itemize item}{fg=white}
-  \setbeamercolor{item}{fg=white}
-  \setbeamercolor{subitem}{fg=white}
-  \setbeamercolor{block body}{fg=white}
-  \usebeamercolor[fg]{normal text}
+  \setbeamercolor*{frametitle}{fg=white}
+  \settextcolour{white}
   \setbeamertemplate{background}{
   		\begin{tikzpicture}
   			\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -90,52 +77,99 @@
   \end{frame}
 }
 
-\newenvironment{2columnsframe}[2]
+\newenvironment{2columnsframe}[3]
 {
-  \begin{frame}[t]
-    \vspace{5pt}
+  \setbeamercolor*{frametitle}{fg=myblack}
+  \settextcolour{white}
+  \setwhitelogofootline{}
+  \setbeamertemplate{background}{
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+      \fill[color=myblack, opacity=0.8] (0.45\paperwidth, 0) rectangle (\the\paperwidth, 0.49\paperheight);
+      \fill[color=tektonblue, opacity=0.8] (0, 0) rectangle (0.50\paperwidth, 0.49\paperheight);
+      \fill[color=tektonlilac, opacity=0.8] (0, 0.39\paperheight) rectangle (0.50\paperwidth, 0.86\paperheight);
+      \fill[color=tektonred, opacity=0.8] (0.45\paperwidth, 0.39\paperheight) rectangle (\the\paperwidth, 0.86\paperheight);
+    \end{tikzpicture}
+  }
+  \begin{frame}[c]
+    \frametitle{#1}
     \begin{columns}[T,totalwidth=\textwidth]
       \column{0.5\textwidth}
-        #1
-      \column{0.5\textwidth}
         #2
+      \column{0.5\textwidth}
+        #3
     \end{columns}
 }
 {
   \end{frame}
+  \setblacklogofootline
 }
 
-\newenvironment{stripedframe}[4]
+\newenvironment{3squares}[4]
 {
-  \setbeamercolor*{footline}{fg=white}
-  \setbeamercolor{title}{fg=white}
-  \setbeamercolor{normal text}{fg=white}
-  \setbeamercolor{frametitle}{fg=white}
-  \setbeamercolor{itemize item}{fg=white}
-  \setbeamercolor{item}{fg=white}
-  \setbeamercolor{subitem}{fg=white}
-  \setbeamercolor{block body}{fg=white}
-  \usebeamercolor[fg]{normal text}
+  \setbeamercolor*{frametitle}{fg=white}
+  \settextcolour{myblack}
+  \setwhitelogofootline{}
   \setbeamertemplate{background}{
-  		\begin{tikzpicture}
-  			\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  			\fill[color=myblack] (0, 0) rectangle (0.25\paperwidth, \the\paperheight);
-        \fill[color=myblue] (0.25\paperwidth, 0) rectangle (0.50\paperwidth, \the\paperheight);
-        \fill[color=myteal] (0.50\paperwidth, 0) rectangle (0.75\paperwidth, \the\paperheight);
-        \fill[color=mygray] (0.75\paperwidth, 0) rectangle (\the\paperwidth, \the\paperheight);
-  		\end{tikzpicture}
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+      \fill[color=myblack] (0, 0.86\paperheight) rectangle (\the\paperwidth, \the\paperheight);
+      \fill[color=myblack, opacity=0.8] (0.46\paperwidth, 0) rectangle (\the\paperwidth, 0.44\paperheight);
+      \fill[color=myblack, opacity=0.4] (0, 0) rectangle (0.49\paperwidth, 0.44\paperheight);
+      \fill[color=mylightgray, opacity=0.8] (0, 0.39\paperheight) rectangle (0.49\paperwidth, 0.86\paperheight);
+      \fill[color=myblack, opacity=0.4] (0.46\paperwidth, 0.39\paperheight) rectangle (\the\paperwidth, 0.86\paperheight);
+    \end{tikzpicture}
+  }
+  \begin{frame}[c]
+    \frametitle{#1}
+    \begin{columns}[T,totalwidth=\textwidth]
+      \column{0.5\textwidth}
+        #2
+        \settextcolour{white}
+        \vspace{0.05\paperheight}
+        #3
+      \column{0.5\textwidth}
+      \settextcolour{white}
+        #4
+    \end{columns}
+}
+{
+  \end{frame}
+  \setblacklogofootline
+}
+
+\newenvironment{stripedframe}[5]
+{
+  \setbeamercolor*{frametitle}{fg=white}
+  \settextcolour{white}
+  \setwhitelogofootline{}
+  \setbeamertemplate{background}{
+      \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle(\the\paperwidth,\the\paperheight);
+        \fill[color=myblack, opacity=0.8] (0, 0) rectangle (0.25\paperwidth, 0.7\paperheight);
+        \fill[color=tektonblue, opacity=0.8] (0.20\paperwidth, 0) rectangle (0.50\paperwidth, 0.7\paperheight);
+        \fill[color=tektonlilac, opacity=0.8] (0.45\paperwidth, 0) rectangle (0.75\paperwidth, 0.7\paperheight);
+        \fill[color=tektonred, opacity=0.8] (0.7\paperwidth, 0) rectangle (\the\paperwidth, 0.7\paperheight);
+        \fill[color=mylightgray] (0, 0.7\paperheight) rectangle (\paperwidth, \paperheight);
+      \end{tikzpicture}
   	}
   \begin{frame}[t]
-    \vspace{5pt}
+    \setbeamercolor{normal text}{fg=titlegray}
+    \usebeamercolor[fg]{normal text}
+    \Huge\centering #1
+    \setbeamercolor{normal text}{fg=white}
+    \usebeamercolor[fg]{normal text}
+    \vspace{0.1\paperheight}
+    \normalsize
     \begin{columns}[T,totalwidth=0.98\textwidth]
-      \column{0.20\textwidth}
-        #1
       \column{0.20\textwidth}
         #2
       \column{0.20\textwidth}
         #3
       \column{0.20\textwidth}
         #4
+      \column{0.20\textwidth}
+        #5
     \end{columns}
 }
 {
@@ -143,24 +177,20 @@
 }
 
 % top black bottom white
-\newenvironment{tblackbgrayframe}
+\newenvironment{tblackbgrayframe}[1]
 {
+  \setbeamercolor*{frametitle}{fg=white}
+  \settextcolour{myblack}
   \setbeamercolor{background canvas}{bg=mylightgray}
-  \setbeamercolor*{footline}{fg=myblack}
-  \setbeamercolor{title}{fg=white}
-  \setbeamercolor{normal text}{fg=white}
-  \setbeamercolor{frametitle}{fg=white}
-  \setbeamercolor{itemize item}{fg=white}
-  \setbeamercolor{item}{fg=white}
-  \setbeamercolor{subitem}{fg=white}
-  \setbeamercolor{block body}{fg=white}
-  \usebeamercolor[fg]{normal text}
+  \setblacklogofootline
   \setbeamertemplate{background}{
-  		\begin{tikzpicture}
-  			\fill[color=myblack] (0, 0) rectangle (\the\paperwidth, 0.2\paperheight);
-  		\end{tikzpicture}
-    }
-  \begin{frame}[t]
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+      \fill[color=myblack] (0, 0.86\paperheight) rectangle (\the\paperwidth, \the\paperheight);
+    \end{tikzpicture}
+  }
+  \begin{frame}[c]
+    \frametitle{#1}
 }
 {
   \end{frame}
@@ -240,19 +270,12 @@
 \newenvironment{lpicrblack}[2][]
 {
   \setbeamercolor{background canvas}{bg=myblack}
-  \setbeamercolor*{footline}{fg=white}
   \setbeamercolor{title}{fg=white}
-  \setbeamercolor{normal text}{fg=white}
-  \setbeamercolor{frametitle}{fg=white}
-  \setbeamercolor{itemize item}{fg=white}
-  \setbeamercolor{item}{fg=white}
-  \setbeamercolor{subitem}{fg=white}
-  \setbeamercolor{block body}{fg=white}
-  \usebeamercolor[fg]{normal text}
+  \settextcolour{white}
   \setbeamertemplate{background}{
     \includegraphics[width=0.5\linewidth]{img/#1}
   }
-  \setbeamertemplate{footline}{}
+  \setwhitelogofootline{notext}
   \begin{frame}[noframenumbering]
     \leftskip=0.55\paperwidth
     \tableofcontents
@@ -265,7 +288,6 @@
 }
 {
   \end{frame}
-  \setwhitelogofootline
 }
 
 % Code listing style
