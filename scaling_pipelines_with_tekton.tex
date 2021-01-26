@@ -43,7 +43,13 @@
 \titlepage{}
 \end{frame}
 
-\begin{lpicrblack}[chewy-I-rgDPLKogs-unsplash.jpg]{Photo by \href{https://unsplash.com/@chewy}{\underline{Chewy}}, CC0}
+\begin{lpicrblack}[chewy-I-rgDPLKogs-unsplash.jpg]{%
+  Photo by \href{https://unsplash.com/@chewy}{\underline{Chewy}}, CC0
+  }%
+  {%
+  \tableofcontents
+  }%
+  {toc}
   \frametitle{Scaling Tekton}
 \end{lpicrblack}
 
@@ -130,41 +136,78 @@
 \begin{sectionwithpicrx}[pierre-bamin--ltjzTfhpCI-unsplash.jpg]{Photo by \href{https://unsplash.com/@bamin}{\underline{Pierre Bamin}}, CC0}
 \end{sectionwithpicrx}
 
-\begin{grayframe}
-  \frametitle{Steps, Tasks and Teams}
-  \begin{itemize}
-    \item units of reuse
-    \item Steps for small scripts of OTS images
-    \item we don't want large shell scripts embedded in YAML
-    \item Tasks == pods, cheap I/O
-    \item Tasks do one thing well, stable interface
-    \item Tasks are re-usable, produced by "experts"
-  \end{itemize}
-  % units of reuse
-  % Steps for small scripts of OTS images
-  % we don't want large shell scripts embedded in YAML
-  % Tasks == pods, cheap I/O
-  % Tasks do one thing well, stable interface
-  % Tasks are re-usable, produced by experts
-\end{grayframe}
+\begin{lpicrblack}[antoine-petitteville-RIdYHUISNuM-unsplash.jpg]{%
+  Photo by \href{https://unsplash.com/@ant0ine}{\underline{Antoine Petitteville}}, CC0
+  }%
+  {%
+    Steps:
+    \begin{itemize}
+      \item Off the Shelves containers
+      \item Small scripts % no large scripts in YAML!
+    \end{itemize}
+    Tasks:
+    \begin{itemize}
+      \item Solve one specific problem
+      \item Owned by a team
+      \item Distributed maintenance
+    \end{itemize}
+    \vspace{0.05\paperheight}
+    Reusability:
+    \begin{itemize}
+      \item Discovery
+      \item Versioning
+      \item Execution efficiency % pod and I/O overhead
+    \end{itemize}
+  }{}%
+  \frametitle{Building Blocks}
+\end{lpicrblack}
 
 \begin{grayframe}
   \frametitle{Catalog and Hub}
+  Discovery:
   \begin{itemize}
-    \item Sharing Tasks and discovery
-    \item Hub and API
-    \item Tekton Bundles
+    \item Kubernetes cluster
+    \item Tekton Catalog
+    \item Tekton Hub \& API
   \end{itemize}
+  \vspace{0.03\paperheight}
+  Improving Reusability:
+  \begin{itemize}
+    \item Tekton Bundles
+    \item Hub and Bundles CLI
+    \item Task Specialization
+    \item Execution efficiency
+    \begin{itemize}
+      \item Multiple Tasks in a Pod
+      \item Multiple Tasks on a Node
+    \end{itemize}
+  \end{itemize}
+  % open source, small team, authoring efficiency is important
+  % IBM, migrating customers to Tekton, large number of tasks
+  \begin{textblock*}{0.4\paperwidth}(0.4\paperwidth,0.1\paperheight)
+    \begin{tikzpicture}%
+      \node [opacity=0.9]{\includegraphics[width=0.4\paperwidth]{img/hub.png}};%
+    \end{tikzpicture}
+  \end{textblock*}
+  \begin{textblock*}{0.3\paperwidth}(0.6\paperwidth,0.45\paperheight)
+    \begin{tikzpicture}%
+      \node [opacity=0.8]{\includegraphics[width=0.3\paperwidth]{img/hub-api.png}};%
+    \end{tikzpicture}
+  \end{textblock*}
   % Sharing Tasks and discovery
   % Tekton Bundles
 \end{grayframe}
 
 \begin{grayframe}
-  \frametitle{The Pipeline}
-  \begin{itemize}
-    \item Ever growing pipeline
-    \item Multiple teams add to it
-  \end{itemize}
+  \frametitle{Pipelines}
+  Building block? \\
+  Example: clone, build, scan, push, test, release, e2e test, publish \\
+  Supported by the catalog. \\
+  What scan strategy? Which tests? \\
+  I could have multiple test pipelines \\
+  Different parts owned by different teams \\
+  We still need small pipelines to do one job \\
+  How do I connect them?
   % Ever growing pipeline, multiple teams add to it
 \end{grayframe}
 
@@ -173,13 +216,12 @@
 \begin{sectionwithpic}[pexels-ray-bilcliff-1509237.jpg]{Photo by \href{https://www.pexels.com/@raybilcliff}{\underline{Ray Bilcliff}}, CC0}
 \end{sectionwithpic}
 
-
 \begin{grayframe}
-  \frametitle{Pipelines \& Triggers}
-  \begin{itemize}
-    \item Intro to triggers
-    \item Running pipelines through triggers
-  \end{itemize}
+  \frametitle{Triggers}
+  Run Tasks and Pipelines as a reaction to events.
+  Intro to triggers
+  Events can be external (PR, CR, OS)
+  Or Internal -> Pipeline triggers a pipeline
   % Running pipelines and triggers
 \end{grayframe}
 
@@ -187,7 +229,9 @@
   \frametitle{Events}
   \begin{itemize}
     \item Receiving and sending events
-    \item Further spread responsibility, break the pipeline
+    \item Overall workflow made of separate pipelines
+    \item Add branches of pipeline on demand
+    \item Orchestration?
     \item Interop and event SIG
   \end{itemize}
   % Receiving and sending events

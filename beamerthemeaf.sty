@@ -267,24 +267,32 @@
   \end{frame}
 }
 
-\newenvironment{lpicrblack}[2][]
+\newenvironment{lpicrblack}[4][]
 {
   \setbeamercolor{background canvas}{bg=myblack}
-  \setbeamercolor{title}{fg=white}
+  \setbeamercolor*{frametitle}{fg=white}
   \settextcolour{white}
   \setbeamertemplate{background}{
     \includegraphics[width=0.5\linewidth]{img/#1}
   }
   \setwhitelogofootline{notext}
-  \begin{frame}[noframenumbering]
-    \leftskip=0.55\paperwidth
-    \tableofcontents
+  \begin{frame}
     \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
       \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
         \usebeamerfont{photolicense}#2%
       \end{beamercolorbox}%
       \vfill
     \end{textblock*}
+    \ifstrempty{#4}{
+      \begin{columns}
+        \column{0.52\paperwidth}
+        \column{0.48\paperwidth}
+        #3
+      \end{columns}
+    }{
+      \leftskip=0.55\paperwidth
+      #3
+    }
 }
 {
   \end{frame}
