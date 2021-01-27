@@ -125,7 +125,7 @@
     \item Bindings: Workspaces, Parameters, \\Results
     \item Execution: TaskRun, PipelineRun
   \end{itemize}
-  \begin{textblock*}{0.51\paperwidth}(0.48\paperwidth,0.28\paperheight)
+  \begin{textblock*}{0.51\paperwidth}(0.48\paperwidth,0.33\paperheight)
     \includegraphics[width=0.5\paperwidth]{img/tekton-workspaces.png}
   \end{textblock*}
   % Knative, Tekton and the CDF
@@ -171,16 +171,16 @@
     \item Tekton Hub \& API
   \end{itemize}
   \vspace{0.03\paperheight}
-  Improving Reusability:
+  Versioning:
   \begin{itemize}
     \item Tekton Bundles
-    \item Hub and Bundles CLI
+    \item Bundles CLI
+  \end{itemize}
+  \vspace{0.03\paperheight}
+  Execution efficiency:
+  \begin{itemize}
     \item Task Specialization
-    \item Execution efficiency
-    \begin{itemize}
-      \item Multiple Tasks in a Pod
-      \item Multiple Tasks on a Node
-    \end{itemize}
+    \item Multiple Tasks in a Pod/Node
   \end{itemize}
   % open source, small team, authoring efficiency is important
   % IBM, migrating customers to Tekton, large number of tasks
@@ -198,18 +198,42 @@
   % Tekton Bundles
 \end{grayframe}
 
-\begin{grayframe}
+\begin{tpicstripedframe}%
+  {tekton-pipeline-blocks.png}%
+  {%
+  Building block?
+  \vspace{0.03\paperheight}
+  Supported by \\the catalog
+  }%
+  {%
+  Swap a block \\
+  \vspace{0.03\paperheight}
+  Add a branch
+  }%
+  {%
+  Different:
+  \begin{itemize}
+    \item Team
+    \item Access
+    \item Namespace
+    \item Cluster
+  \end{itemize}
+  }%
+  {%
+  One workflow. \\
+  \vspace{0.03\paperheight}
+  How can we connect the parts?
+  }%
   \frametitle{Pipelines}
-  Building block? \\
-  Example: clone, build, scan, push, test, release, e2e test, publish \\
-  Supported by the catalog. \\
-  What scan strategy? Which tests? \\
-  I could have multiple test pipelines \\
-  Different parts owned by different teams \\
-  We still need small pipelines to do one job \\
-  How do I connect them?
+  % Example: clone, build, scan, push, test, release, e2e test, publish \\
+  % Supported by the catalog. \\
+  % What scan strategy? Which tests? \\
+  % I could have multiple test pipelines \\
+  % Different parts owned by different teams \\
+  % We still need small pipelines to do one job \\
+  % How do I connect them?
   % Ever growing pipeline, multiple teams add to it
-\end{grayframe}
+\end{tpicstripedframe}
 
 \section[Running]{Running}
 
@@ -222,6 +246,7 @@
   Intro to triggers
   Events can be external (PR, CR, OS)
   Or Internal -> Pipeline triggers a pipeline
+  Execution across clusters
   % Running pipelines and triggers
 \end{grayframe}
 
@@ -306,48 +331,43 @@
     Data and I/O
   }%
   {%
-  Reusability vs. Efficiency
+  \textit{Reusability vs. Efficiency} \\
+  \vspace{0.04\paperheight}
+  Common Tasks (\faArrowRight Pods):
   \begin{itemize}
-    \item Task == Pod % pod creation overhead
-    \item Common tasks:
-    \begin{itemize}
-      \item Clone a git repository
-      \item Build a container image
-      \item Download content from storage
-      \item Run tests
-    \end{itemize}
+    \item Clone a git repository
+    \item Build a container image
+    \item Download content from storage
+    \item Run tests
   \end{itemize}
   }%
   {%
+  \textit{Pods scheduled independently} \\
   \begin{itemize}
-    \item Pods scheduled independently
-    \begin{itemize}
-      \item Shared storage required (PVC)
-      % provisioning time, different features with
-      % different back-ends
-      \item Extra I/O
-      \item Extra execution time
-      \item Multi-region clusters
-    \end{itemize}
+    \item Shared storage required (PVC)
+    % provisioning time, different features with
+    % different back-ends
+    \item Extra I/O
+    \item Extra execution time
+    \item Multi-region clusters
   \end{itemize}
   }%
   {%
-  Data in Pipelines
+  \textit{Data in Pipelines} \\
+  \vspace{0.02\paperheight}
+  Meta: "Results", Large: "Workspaces" \\
+  \vspace{0.01\paperheight}
+  Alternatives: \\
   \begin{itemize}
-  \item Metadata: "Results"
-  \item Large data: workspace
-  \item Alternatives:
-    \begin{itemize}
-      \item Multiple Tasks in a Pod
-      % See pipeline in pipeline, custom tasks
-      % Scheduling becomes challenging -> custom scheduler
-      \item Re-usable Steps
-      % Changes the unit of re-use
-      % More complex syntax
-      \item Custom scheduler
-      % Implementation and maintenance cost
-      % Complex problem scape
-    \end{itemize}
+    \item Multiple Tasks in a Pod
+    % See pipeline in pipeline, custom tasks
+    % Scheduling becomes challenging -> custom scheduler
+    \item Re-usable Steps
+    % Changes the unit of re-use
+    % More complex syntax
+    \item Custom scheduler
+    % Implementation and maintenance cost
+    % Complex problem scape
   \end{itemize}
   }%
   % Unit of re-use and data

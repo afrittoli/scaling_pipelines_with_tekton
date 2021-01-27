@@ -52,5 +52,9 @@
 
 \patchcmd{\beamer@section}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
 
+\setlength{\leftmargini}{0.03\paperwidth}
+\defbeamertemplate{itemize item}{chevron}{\usebeamerfont*{itemize item}\hbox{\faAngleRight}}
+\setbeamertemplate{items}[chevron]
+
 \mode
 <all>

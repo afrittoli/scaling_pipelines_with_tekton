@@ -176,6 +176,43 @@
   \end{frame}
 }
 
+% top picture, 4 columns
+\newenvironment{tpicstripedframe}[5]
+{
+  \setbeamercolor*{frametitle}{fg=myblack}
+  \settextcolour{white}
+  \setwhitelogofootline{}
+  \setbeamertemplate{background}{
+      \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle(\the\paperwidth,\the\paperheight);
+        \fill[color=myblack, opacity=0.8] (0, 0) rectangle (0.25\paperwidth, 0.52\paperheight);
+        \fill[color=tektonblue, opacity=0.8] (0.20\paperwidth, 0) rectangle (0.50\paperwidth, 0.52\paperheight);
+        \fill[color=tektonlilac, opacity=0.8] (0.45\paperwidth, 0) rectangle (0.75\paperwidth, 0.52\paperheight);
+        \fill[color=tektonred, opacity=0.8] (0.7\paperwidth, 0) rectangle (\the\paperwidth, 0.52\paperheight);
+      \end{tikzpicture}
+  	}
+  \begin{frame}[t]
+    \begin{textblock*}{\paperwidth}(0cm, 0.05\paperheight)
+      \centering
+      \includegraphics[height=0.4\paperheight]{img/#1}
+    \end{textblock*}
+    \vspace{0.45\paperheight}
+    \normalsize
+    \begin{columns}[T,totalwidth=0.98\textwidth]
+      \column{0.20\textwidth}
+        #2
+      \column{0.20\textwidth}
+        #3
+      \column{0.20\textwidth}
+        #4
+      \column{0.20\textwidth}
+        #5
+    \end{columns}
+}
+{
+  \end{frame}
+}
+
 % top black bottom white
 \newenvironment{tblackbgrayframe}[1]
 {
