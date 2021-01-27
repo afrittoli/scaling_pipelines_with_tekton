@@ -240,29 +240,50 @@
 \begin{sectionwithpic}[pexels-ray-bilcliff-1509237.jpg]{Photo by \href{https://www.pexels.com/@raybilcliff}{\underline{Ray Bilcliff}}, CC0}
 \end{sectionwithpic}
 
-\begin{grayframe}
+\begin{lgrayrwhiteframe}
   \frametitle{Triggers}
-  Run Tasks and Pipelines as a reaction to events.
-  Intro to triggers
-  Events can be external (PR, CR, OS)
-  Or Internal -> Pipeline triggers a pipeline
-  Execution across clusters
-  % Running pipelines and triggers
-\end{grayframe}
-
-\begin{grayframe}
-  \frametitle{Events}
+  Run Pipelines on Events:
   \begin{itemize}
-    \item Receiving and sending events
-    \item Overall workflow made of separate pipelines
-    \item Add branches of pipeline on demand
-    \item Orchestration?
-    \item Interop and event SIG
+    \item HTTP POST
+    \item Pull Request, Image Published
   \end{itemize}
+  \vspace{0.02\paperheight}
+  Components:
+  \begin{itemize}
+    \item Receive: Event Listener
+    \item Filter: Interceptors
+    \item Run: Binding and Templates
+  \end{itemize}
+  \vspace{0.02\paperheight}
+  Generate Events:
+  \begin{itemize}
+    \item k8s and CloudEvents
+    \item Start, Run and Stop
+  \end{itemize}
+  \begin{textblock*}{0.51\paperwidth}(0.48\paperwidth,0.33\paperheight)
+    \includegraphics[width=0.5\paperwidth]{img/tekton-triggers.png}
+  \end{textblock*}
+\end{lgrayrwhiteframe}
+
+\begin{tpicstripedframe}%
+  {tekton-pipeline-async.png}%
+  {%
+  Receiving and sending events
+  }%
+  {%
+  Overall workflow made of separate pipelines
+  }%
+  {%
+  Orchestration?
+  }%
+  {%
+  Interop and event SIG
+  }%
+  \frametitle{Events}
   % Receiving and sending events
   % Further spread responsibility, break the pipeline
   % Interop and event SIG
-\end{grayframe}
+\end{tpicstripedframe}
 
 \section[Bottlenecks]{Bottlenecks}
 \begin{sectionwithpicrx}[dan-cristian-padure-LDMgqr8z7ZE-unsplash.jpg]{Photo by \href{https://unsplash.com/@dancristianp}{\underline{Dan-Cristian Pădureț}}, CC0}
