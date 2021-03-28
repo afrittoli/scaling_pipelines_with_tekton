@@ -1,0 +1,70 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-with-ingress
+  namespace: default
+  labels:
+    app.kubernetes.io/version: "0.1"
+spec:
+  params:
+    - name: image
+      type: string
+      description: the container image to deploy
+    - name: target
+      type: string
+      description: the suffix of the service and deployment (cdcon-<suffix>)
+  results:
+    - name: url
+      description: the URL where the app is deployed to
+  steps:
+    - name: deploy
+      image: docker.io/bitnami/kubectl@sha256:792e0aaabee6c51d734b5d3b150ba990d6106c4c081731d8570c1b9afe0c52d9
+      script: |
+        #!/bin/sh
+        set -ex
+
+        # Try to create a deployment, in case it's our first run
+        kubectl create deployment cdcon-$(params.target) --image $(params.image) || true
+
+        # Update the deployment, rollout new image
+        kubectl set image deployment/cdcon-$(params.target) *=$(params.image)
+
+        # Create a service if it doesn't exists yet
+        kubectl expose deployment/cdcon-$(params.target) --port 8080 --target-port 80 || true
+
+        # Make sure we run at least two pods
+        kubectl scale --replicas=2 deployment/cdcon-$(params.target)
+
+    - name: ingress
+      image: docker.io/bitnami/kubectl@sha256:792e0aaabee6c51d734b5d3b150ba990d6106c4c081731d8570c1b9afe0c52d9
+      script: |
+        #!/bin/bash
+        set -ex
+
+        if [ "$(params.target)" == "demo" ]; then
+          printf "http://localhost/demo" > $(results.url.path)
+        else
+          # For the non-default deployment, create an Ingress (unless it exists already)
+          cat <<EOF | kubectl create -f - || true
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: cdcon-$(params.target)
+          annotations:
+            nginx.ingress.kubernetes.io/rewrite-target: /\$2
+        spec:
+          rules:
+          - http:
+              paths:
+              - path: /ci-$(params.target)(/|$)(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: cdcon-$(params.target)
+                    port:
+                      number: 8080
+        EOF
+
+          # Write the result
+          printf "http://localhost/ci-$(params.target)" > $(results.url.path)
+        fi

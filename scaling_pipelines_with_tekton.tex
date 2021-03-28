@@ -12,13 +12,11 @@
 
 
 \title{Scaling Pipelines with Tekton}
-\date[02 Feb 2021]{02 Feb 2021 | \faTwitter ~@blackchip76 | \faGithub ~afrittoli}
+\date[24 Jun 2021]{24 Jun 2021 | \faTwitter ~@blackchip76 | \faGithub ~afrittoli}
 \author[Andrea Frittoli]{
   Andrea Frittoli \\
   Developer Advocate \\
-  andrea.frittoli@uk.ibm.com \\
-  --- \\
-  Scaling Continuous Delivery (Virtual)
+  andrea.frittoli@uk.ibm.com
 }
 
 \usetheme{af}
@@ -52,6 +50,8 @@
   {toc}
   \frametitle{Scaling Tekton}
 \end{lpicrblack}
+
+\note{Time for Q\&A}
 
 \section[Introduction]{Introduction}
 
@@ -101,7 +101,7 @@
   Adds-on:
   \begin{itemize}
     \item Results
-    \item Chain
+    \item Chains
     \item Experiments
   \end{itemize}
   }%
@@ -110,6 +110,12 @@
   % \end{textblock*}
   % A brief into to Tekton
 \end{stripedframe}
+
+\note{
+  Talk about how Tekton aims to be the standard cloud-native for running pipelines.
+  It gives you out of the box serveless and scalable execution of workflows.
+  Tekton is non-opionated, giving operators and pipeline authors alike maximum flexibility.
+}
 
 \begin{lgrayrwhiteframe}
   \frametitle{A bit of history}
@@ -131,6 +137,11 @@
   \end{textblock*}
   % Knative, Tekton and the CDF
 \end{lgrayrwhiteframe}
+
+\note{
+  Focus on extending the k8s API.
+  New resources / abstraction to build and run your pipelines
+}
 
 \section[Authoring]{Authoring}
 
@@ -198,6 +209,18 @@
   % Sharing Tasks and discovery
   % Tekton Bundles
 \end{grayframe}
+
+\note{
+  Reusability!!!
+  Add a short demo:
+  - Search and install a task with tkn
+  - Create a task from a local YAML
+  - Put them together as a pipeline
+  - Push the local task to an OCI bundle
+  - Re-run the pipeline with bundles
+  Talk about how orgs can build their own catalog(s)
+  Share their tasks through bundles
+}
 
 \begin{tpicstripedframe}%
   {tekton-pipeline-blocks.png}%
