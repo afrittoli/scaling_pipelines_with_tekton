@@ -403,7 +403,7 @@
     \item Millions containers/month @IBM
     \item Throttling (for security too)
   \end{itemize}
-  \vspace{0.1\textheight}
+  \vspace{0.17\textheight}
   Cluster pollution?
   \begin{itemize}
     \item Tekton Results
@@ -411,52 +411,49 @@
   }
 \end{2columnsframe}
 
-\begin{3squares}%
-  {%
-    Data and I/O
+\section[Roadmap]{Conclusions \& Roadmap}
+\begin{sectionwithpic}[julie_falk_flickr_22258190324_6a583208ae_k.png]{Photo by \href{https://www.flickr.com/photos/piper/}{\underline{Julie Falk}}, CC BY-NC 2.0}
+\end{sectionwithpic}
+
+\begin{lpicrblack}[john-yunker-Z9rKuPEU6Uc-unsplash.jpg]{%
+  Photo by \href{https://unsplash.com/@jyunker}{\underline{John Yunker}}, CC0
   }%
   {%
-  \textit{Reusability vs. Efficiency} \\
-  \vspace{0.04\paperheight}
-  Common Tasks (\faArrowRight Pods):
+    Author Time Scalability:
+    \begin{itemize}
+      \item Best Practices
+      \item Reusable Tasks and Pipelines
+      \item Versioning \& Sharing
+      \item Break Down Large Pipelines
+     \end{itemize}
+    \vspace{0.1\paperheight}
+    Run Time Scalability:
+    \begin{itemize}
+      \item Cloud Native \& Scalable
+      \item Execution Throttling
+      \item Pod execution overhead
+    \end{itemize}
+    \vspace{0.01\paperheight}
+  }{}%
+  \frametitle{}
+\end{lpicrblack}
+
+{
+\begin{tblackbgrayframe}{Roadmap}
+  %\frametitle{Growing pipelines}
   \begin{itemize}
-    \item Clone a git repository
-    \item Build a container image
-    \item Download content from storage
-    \item Run tests
+    \item Continue Dogfooding Tekton at Scale!
+    \item Pipelines in Pipelines \href{https://github.com/tektoncd/community/blob/main/teps/0056-pipelines-in-pipelines.md}{TEP-0056}
+    \item Remote Resource Resolution \href{https://github.com/tektoncd/community/blob/main/teps/0060-remote-resource-resolution.md}{TEP-0060}
+    \item Decouple Task Composition from Scheduling \href{https://github.com/tektoncd/community/blob/main/teps/0044-decouple-task-composition-from-scheduling.md}{TEP-0044}
+    \item Runtime Task Bundle Definitions \href{https://github.com/tektoncd/community/pull/429}{TEP-0068}
+    \item Implement the SIG Events format of Cloud Events
   \end{itemize}
-  }%
-  {%
-  \textit{Pods scheduled independently} \\
-  \begin{itemize}
-    \item Shared storage required (PVC)
-    % provisioning time, different features with
-    % different back-ends
-    \item Extra I/O
-    \item Extra execution time
-  \end{itemize}
-  }%
-  {%
-  \textit{Data in Pipelines} \\
-  \vspace{0.02\paperheight}
-  Meta: "Results", Large: "Workspaces" \\
-  \vspace{0.01\paperheight}
-  Alternatives: \\
-  \begin{itemize}
-    \item Multiple Tasks in a Pod
-    % See pipeline in pipeline, custom tasks
-    % Scheduling becomes challenging -> custom scheduler
-    \item Re-usable Steps
-    % Changes the unit of re-use
-    % More complex syntax
-    \item Custom scheduler
-    % Implementation and maintenance cost
-    % Complex problem scape
-  \end{itemize}
-  }%
-  % Unit of re-use and data
-  % -> tasks vs pipelines, pod overhead, data across nodes
-\end{3squares}
+  \begin{textblock*}{0.28\paperwidth}(0.65\paperwidth,0.35\paperheight)
+    \includegraphics[width=0.28\paperwidth]{img/tekton-icon-color.png}
+  \end{textblock*}
+\end{tblackbgrayframe}
+}
 
 \section[Q\&A]{Thank You! \\Questions?}
 
@@ -475,8 +472,7 @@
     \item Tekton on GitHub: \href{https://github.com/tektoncd}{github.com/tektoncd}
     \item Tekton Results: \href{https://github.com/tektoncd/results}{github.com/tektoncd/results}
     \item Tekton Hub: \href{https://hub.tekton.dev}{hub.tekton.dev}
-    \item Performance TEP: \href{https://github.com/tektoncd/community/blob/master/teps/0036-start-measuring-tekton-pipelines-performance.md}{TEP-0036}
-    \item Metrics TEP: \href{https://github.com/tektoncd/community/blob/master/teps/0006-tekton-metrics.md}{TEP-0006}
+    \item Tekton TEPs: \href{https://github.com/tektoncd/community/tree/main/teps}{github.com/tektoncd/community/tree/main/teps}
   \end{itemize}
   \begin{textblock*}{0.13\paperwidth}(0.73\paperwidth,0.65\paperheight)
     \includesvg[width=0.13\paperwidth]{img/tekton-icon-color.svg}
