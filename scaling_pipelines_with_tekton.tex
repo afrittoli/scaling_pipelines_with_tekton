@@ -168,11 +168,18 @@
     \begin{itemize}
       \item Discovery
       \item Versioning
-      \item Execution efficiency % pod and I/O overhead
+      \item Best Practices
     \end{itemize}
   }{}%
   \frametitle{Building Blocks}
 \end{lpicrblack}
+
+\note{
+  Scalable authoring depends on reusability and maintainability
+  Teams need to be able to use tasks and pipelines and connect them
+  as lego blocks. Task and pipeline maintaners need to be able to
+  build new versions of tasks without breaking downstream users.
+}
 
 \begin{grayframe}
   \frametitle{Catalog and Hub}
@@ -186,22 +193,23 @@
   Versioning:
   \begin{itemize}
     \item Tekton Bundles
-    \item Bundles CLI
+    \item \texttt{tkn bundle [push|list]}
+    \item \texttt{gcr.io/tekton-releases/catalog/upstream/}
   \end{itemize}
   \vspace{0.03\paperheight}
-  Execution efficiency:
+  Best Practices:
   \begin{itemize}
-    \item Task Specialization
-    \item Multiple Tasks in a Pod/Node
+    \item Params, Results, Workspaces % Good defaults, optional when possible
+    \item Portability % multi-arch images
   \end{itemize}
   % open source, small team, authoring efficiency is important
   % IBM, migrating customers to Tekton, large number of tasks
-  \begin{textblock*}{0.4\paperwidth}(0.4\paperwidth,0.1\paperheight)
+  \begin{textblock*}{0.4\paperwidth}(0.42\paperwidth,0.05\paperheight)
     \begin{tikzpicture}%
       \node [opacity=0.9]{\includegraphics[width=0.4\paperwidth]{img/hub.png}};%
     \end{tikzpicture}
   \end{textblock*}
-  \begin{textblock*}{0.3\paperwidth}(0.6\paperwidth,0.45\paperheight)
+  \begin{textblock*}{0.3\paperwidth}(0.63\paperwidth,0.45\paperheight)
     \begin{tikzpicture}%
       \node [opacity=0.8]{\includegraphics[width=0.3\paperwidth]{img/hub-api.png}};%
     \end{tikzpicture}
@@ -225,28 +233,44 @@
 \begin{tpicstripedframe}%
   {tekton-pipeline-blocks.png}%
   {%
-  Building block? \\
+  Short pipelines: \\
   \vspace{0.03\paperheight}
-  Supported by \\the catalog
+  Building blocks
+  \begin{itemize}
+    \item Conditions
+    \item Optional Inputs
+  \end{itemize}
   }%
   {%
-  Swap a block \\
+  Large Pipelines:
   \vspace{0.03\paperheight}
-  Add a branch
+  How to:
+  \small
+  \begin{itemize}
+    \item Add a Branch \\
+    \item Swap a Block \\
+    \item Access Control \\
+    \item Distribute \\
+  \end{itemize}
   }%
   {%
-  Different:
+  Distribute:
+  \vspace{0.03\paperheight}
   \begin{itemize}
     \item Team
     \item Access
     \item Namespace
     \item Cluster
+    \item Platform
   \end{itemize}
   }%
   {%
-  One workflow. \\
+  One workflow: \\
   \vspace{0.03\paperheight}
-  How can we connect the parts?
+  \begin{itemize}
+    \item Pipeline in Pipeline (experimental)
+    \item \texttt{CloudEvents}
+  \end{itemize}
   }%
   \frametitle{Pipelines}
   % Example: clone, build, scan, push, test, release, e2e test, publish \\
@@ -331,7 +355,7 @@
 \end{sectionwithpicrx}
 
 {
-\begin{tblackbgrayframe}{Growing pipelines}
+\begin{tblackbgrayframe}{Very Large pipelines}
   %\frametitle{Growing pipelines}
   \begin{itemize}
     \item Directed Acyclic Graphs
@@ -340,8 +364,12 @@
   \end{itemize}
   \begin{itemize}
     \item DAG build on every reconcile
-    \item Suboptimal code in the DAG computation
     \item Hundreds of nodes and connections
+    \item Optimized code in the DAG computation
+  \end{itemize}
+  \begin{itemize}
+    \item Maintainability
+    \item Pod Overhead
   \end{itemize}
   \begin{textblock*}{0.42\paperwidth}(0.55\paperwidth,0.35\paperheight)
     \includegraphics[width=0.42\paperwidth]{img/tekton-large-dag.png}
@@ -351,19 +379,20 @@
 
 \begin{2columnsframe}%
   {%
-    Under Pressure%
+    Under Pressure - Running \textbf{many} Pipelines%
   }%
   {%
   Concurrent execution
   \begin{itemize}
+    \item Cached K8s API calls: Informers
+    \item Scale Up Controllers: LeaderElection
     \item Cluster Resources: K8s scheduler
-    \item K8s API: Informers
-    \item Tekton Controllers: LeaderElection
   \end{itemize}
   \vspace{0.17\textheight}
   Potential enhancements:
   \begin{itemize}
     \item Throttling pipeline execution
+    \item Optimize Execution Runtime
     \item Tekton custom scheduler
   \end{itemize}
   }%
@@ -373,18 +402,12 @@
     \item Thousands Tasks/month upstream
     \item Millions containers/month @IBM
     \item Throttling (for security too)
-    \item Cluster pollution
   \end{itemize}
   \vspace{0.1\textheight}
-  Upcoming features:
+  Cluster pollution?
   \begin{itemize}
     \item Tekton Results
-    \item Performance testing
-    \item Metric improvements
   \end{itemize}
-  % Many pipelines in parallel / bursts
-  % -> Informers, LeaderElection
-  % Large execution history
   }
 \end{2columnsframe}
 

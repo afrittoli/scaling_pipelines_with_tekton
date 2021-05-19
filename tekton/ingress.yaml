@@ -10,17 +10,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /ci(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: el-tekton-ci
-            port:
-              number: 8080
       - path: /demo(/|$)(.*)
         pathType: Prefix
         backend:
           service:
-            name: cnd-demo
+            name: cdcon-demo
             port:
               number: 8080

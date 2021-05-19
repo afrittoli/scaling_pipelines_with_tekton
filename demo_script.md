@@ -14,6 +14,8 @@ Provision the pipeline to the cluster:
 
 ```sh
 kubectl create -f tekton/pipeline.yaml
+kubectl create -f tekton/ingress.yaml
+kubectl create -f tekton/rbac.yaml
 ```
 
 ```sh

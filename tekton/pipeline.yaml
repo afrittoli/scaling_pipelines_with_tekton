@@ -10,9 +10,6 @@ spec:
     - name: revision
       type: string
       default: main
-    - name: target
-      type: string
-      default: demo
   workspaces:
     - name: source
     - name: dockerconfig
@@ -46,7 +43,7 @@ spec:
         bundle: gcr.io/tekton-releases/catalog/upstream/kaniko:0.3
       params:
         - name: IMAGE
-          value: $(params.registry)/zero2tekton:$(tasks.clone.results.commit)
+          value: $(params.registry)/cdcondemo:$(tasks.clone.results.commit)
         - name: CONTEXT
           value: images/demo
       workspaces:
@@ -57,10 +54,8 @@ spec:
     - name: deploy
       runAfter: ['build']
       taskRef:
-        name: deploy-with-ingress
-        bundle: uk.icr.io/tekton/catalog/demo/deploy-with-ingress:0.1
+        name: deploy
+        bundle: uk.icr.io/tekton/catalog/demo/deploy:0.1
       params:
         - name: image
-          value: $(params.registry)/zero2tekton@$(tasks.build.results.IMAGE-DIGEST)
-        - name: target
-          value: $(params.target)
+          value: $(params.registry)/cdcondemo@$(tasks.build.results.IMAGE-DIGEST)
