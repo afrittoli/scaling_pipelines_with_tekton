@@ -257,6 +257,30 @@
   \end{frame}
 }
 
+\newenvironment<>{sectionwithpich}[2][]
+{
+  \begin{frame}[t]
+    \begin{textblock*}{\paperwidth}(0cm,0cm)
+      \includegraphics[height=\paperheight]{img/#1}
+    \end{textblock*}
+    \begin{textblock*}{\paperwidth}(0.32cm,0.34cm)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{section page header}
+        \usebeamerfont{section name}\insertsection%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+    \begin{textblock*}{0.4\paperwidth}(0.005\paperwidth,0.97\paperheight)
+      \begin{beamercolorbox}[wd=0.4\paperwidth]{photolicense}
+        \usebeamerfont{photolicense}#2%
+      \end{beamercolorbox}%
+      \vfill
+    \end{textblock*}
+}
+{
+  \end{frame}
+}
+
+
 \newenvironment<>{sectionwithpicrx}[2][]
 {
   \begin{frame}[t]
